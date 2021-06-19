@@ -1,6 +1,8 @@
 // #include <iostream>
 // #include <string>
-#include "util/utils.h"
+// #include "util/utils.h"
+
+// using namespace std;  //  std:: 생략가능
 
 //  7부. C++ 배우기
 #include "lec/lec52.h"  //  52. C++ 스타일 입출력
@@ -19,8 +21,10 @@
 #include "lec/lec64.h"  //  64. 멤버 메서드 활용하기 / 65. 연산자 오버로딩
 #include "lec/ex66.h"   //  66. 8부(클래스) 종합문제 - 1
 #include "lec/ex67.h"   //  67. 8부(클래스) 종합문제 - 2
-
-using namespace std;  //  std:: 생략가능
+#include "lec/lec68.h"  //  68. 동적 할당
+#include "lec/lec69.h"  //  69. 깊은 복사와 얕은 복사 (1)
+#include "lec/lec70.h"  //  70. 깊은 복사와 얕은 복사 (2) - 복사 생성자 오버로딩
+#include "lec/lec71.h"  //  71. 깊은 복사와 얕은 복사 (3) - 대입 연산자 오버로딩
 
 int main() {
   // std::cout << "Hello World!\n";
@@ -41,6 +45,12 @@ int main() {
   // lec63();  //  63. 상수형 매개변수와 상수형 메서드
   // lec64();  //  64. 멤버 메서드 활용하기
   // ex66();   //  66. 8부(클래스) 종합문제 - 1
-  ex67();   //  67. 8부(클래스) 종합문제 - 2
+  // ex67();   //  67. 8부(클래스) 종합문제 - 2
+
+  //  9부. 동적 할당과 객체 복사 (C++)
+  // lec68();  //  68. 동적 할당
+  // lec69();  //  69. 깊은 복사와 얕은 복사 (1)
+  // lec70();  //  70. 깊은 복사와 얕은 복사 (2) - 복사 생성자 오버로딩
+  lec71();  //  71. 깊은 복사와 얕은 복사 (3) - 대입 연산자 오버로딩
 
 }
