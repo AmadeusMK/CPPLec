@@ -6,16 +6,30 @@ using namespace std;  //  std:: 생략가능
   연산자 오버로딩
 
   String s3;
-  s3 = s1;    //  얕은 복사로 진행...
+  s3 = s1;    //  얕은 복사로 진행됨...
 
-
+  s3.operator=( s1 );   //  연산자 오버로딩으로 해결
 */
 
 class String {
 
   private:
+
     char *strData;
     int len;
+
+    //  메모리 공간 할당
+    void alloc( int len ) {
+      strData = new char[ len + 1 ];  //  길이(len) + 1('\0' 추가)
+      cout << "strData 할당 : " << (void*)strData << endl;
+    }
+
+    //  할당된 메모리 공간 해제
+    void release() {
+      delete[] strData;
+      cout << "strData 해제 : " << (void*)strData << endl;
+    }
+
 
   public:
 
@@ -28,40 +42,31 @@ class String {
     String( const char *str ) {
       cout << "String( const char * )" << endl;
       len = strlen( str );
-      strData = new char[ len + 1 ];  //  길이(len) + 1('\0' 추가)
-      cout << "strData 할당 : " << (void*)strData << endl;
+      alloc( len );             //  메모리 공간 할당
       strcpy( strData, str );   //  깊은 복사
     }
 
     //  복사 생성자 오버로딩
     String( const String &rhs ) {
-      cout << "String( const String &rhs )" << endl;
+      cout << "String( const String & )" << endl;
       len = rhs.len;
-      // strData = rhs.strData;  //  얕은 복사임으로, 실행시 문제가 됨...
-      //  다음과 같이 오류 수정
-      strData = new char[len];
-      cout << "strData 할당 : " << (void*)strData << endl;
+      alloc( len );             //  메모리 공간 할당
       strcpy( strData, rhs.strData );   //  깊은 복사
     }
 
     ~String() {
       cout << "~String()" << endl;
-      delete[] strData;
-      cout << "strData 해제 : " << (void*)strData << endl;
+      release();                //  할당된 메모리 공간 해제
       strData = NULL;
     }
 
     //  연산자 오버로딩
-    //  
     String &operator=( const String &rhs ) {
-      cout << "operator=( const String &rhs )" << endl;
+      cout << "operator=( const String & )" << endl;
       if ( this != &rhs ) { //  인자로 받은 &rhs 와는 의미가 다름...
         len = rhs.len;
-        // strData = rhs.strData;  //  얕은 복사임으로, 실행시 문제가 됨...
-        //  다음과 같이 오류 수정
-        delete[] strData;       //  기존 메모리 공간 해제
-        strData = new char[len];
-        cout << "strData 할당 : " << (void*)strData << endl;
+        release();              //  기존 할당된 메모리 공간 해제
+        alloc( len );           //  메모리 공간 할당
         strcpy( strData, rhs.strData );   //  깊은 복사
       }
       return *this;
