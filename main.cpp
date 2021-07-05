@@ -45,6 +45,9 @@
 #include "lec/lec84.h"  //  84. 생성/소멸자 실행 순서와 가상 소멸자
 // #include "lec/lec85.h"  //  85. 상속에서의 형변환 (1) - 업캐스팅
 
+//  clang++-7 -pthread -std=c++17 -o main main.cpp util/utils.cpp lec/lec83.cpp
+//  ./main
+
 int main() {
   // std::cout << "Hello World!\n";
 
