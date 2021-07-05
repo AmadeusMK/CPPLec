@@ -76,14 +76,6 @@ void lec79() {
 
   title_header( "79. 상속이 필요한 이유 (1)" );
 
-  lec79_1();
-
-}
-
-void lec79_1() {
-
-  title_header( "" );
-
   //  ex)
   //  두들 : 안녕~?
   //  두들 : [강아지 사진]
